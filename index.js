@@ -20,7 +20,7 @@ user.sync({ alter: true });
 
 app.post(
   "/user",
-  body("username").isEmail(),
+  body("username").isEmail().withMessage("User name is incorrect"),
   body("password").isLength({ min: 5 }),
   addUser
 );
