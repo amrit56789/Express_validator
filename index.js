@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const { body, validationResult } = require("express-validator");
 
 const app = express();
 
@@ -17,7 +18,12 @@ const { addUser } = require("./controller/userController");
 
 user.sync({ alter: true });
 
-app.post("/user", addUser);
+app.post(
+  "/user",
+  body("username").isEmail(),
+  body("password").isLength({ min: 5 }),
+  addUser
+);
 
 const port = process.env.port || 8000;
 
