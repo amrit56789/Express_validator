@@ -13,7 +13,12 @@ app.use(bodyParser.json());
 
 const user = require("./models/user");
 
+const { addUser } = require("./controller/userController");
+
 user.sync({ alter: true });
+
+app.post("/user", addUser);
+
 const port = process.env.port || 8000;
 
 app.listen(port);

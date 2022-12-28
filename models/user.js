@@ -12,7 +12,7 @@ const user = sequelize.define(
       primaryKey: true,
     },
     username: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       unique: true,
       allowNull: false,
     },
